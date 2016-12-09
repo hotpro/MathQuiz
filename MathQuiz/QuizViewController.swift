@@ -8,12 +8,10 @@
 
 import UIKit
 
-class QuizViewController: UIViewController {
+class QuizViewController: UIViewController, KeyboardDelegate {
     // MARK: Properties
     @IBOutlet weak var operatorLabel: UILabel!
-    
-    
-    
+    @IBOutlet weak var numberText1: UITextField!
     
     var operatorType: Int!
 
@@ -29,11 +27,30 @@ class QuizViewController: UIViewController {
         }
 
         // Do any additional setup after loading the view.
+        initKeyboard()
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func initKeyboard() {
+        
+        let keyboardView = Keyboard(frame: CGRect(x: 0, y: self.view.frame.height - 300, width: self.view.frame.width, height: 300))
+        
+        keyboardView.delegate = self
+        
+        self.view.addSubview(keyboardView)
+        
+    }
+    
+    func keyWasTapped(_ character: String) {
+        numberText1.insertText(character)
+    }
+    
+    func backspace() {
+        numberText1.deleteBackward()
     }
     
 

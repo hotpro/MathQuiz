@@ -13,6 +13,8 @@
 		36A6E6DD1DAE0C130004CDD5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 36A6E6DC1DAE0C130004CDD5 /* Assets.xcassets */; };
 		36A6E6E01DAE0C130004CDD5 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 36A6E6DE1DAE0C130004CDD5 /* LaunchScreen.storyboard */; };
 		36A6E6EA1DAE0FC60004CDD5 /* QuizViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A6E6E91DAE0FC60004CDD5 /* QuizViewController.swift */; };
+		36C8C7231DFA844D00A2CF34 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36C8C7211DFA844D00A2CF34 /* Keyboard.swift */; };
+		36C8C7241DFA844D00A2CF34 /* Keyboard.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36C8C7221DFA844D00A2CF34 /* Keyboard.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		36A6E6DF1DAE0C130004CDD5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		36A6E6E11DAE0C130004CDD5 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		36A6E6E91DAE0FC60004CDD5 /* QuizViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuizViewController.swift; sourceTree = "<group>"; };
+		36C8C7211DFA844D00A2CF34 /* Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
+		36C8C7221DFA844D00A2CF34 /* Keyboard.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Keyboard.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,8 @@
 			isa = PBXGroup;
 			children = (
 				36A6E6D51DAE0C130004CDD5 /* AppDelegate.swift */,
+				36C8C7211DFA844D00A2CF34 /* Keyboard.swift */,
+				36C8C7221DFA844D00A2CF34 /* Keyboard.xib */,
 				36A6E6D71DAE0C130004CDD5 /* ViewController.swift */,
 				36A6E6D91DAE0C130004CDD5 /* Main.storyboard */,
 				36A6E6DC1DAE0C130004CDD5 /* Assets.xcassets */,
@@ -128,6 +134,7 @@
 			files = (
 				36A6E6E01DAE0C130004CDD5 /* LaunchScreen.storyboard in Resources */,
 				36A6E6DD1DAE0C130004CDD5 /* Assets.xcassets in Resources */,
+				36C8C7241DFA844D00A2CF34 /* Keyboard.xib in Resources */,
 				36A6E6DB1DAE0C130004CDD5 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -141,6 +148,7 @@
 			files = (
 				36A6E6EA1DAE0FC60004CDD5 /* QuizViewController.swift in Sources */,
 				36A6E6D81DAE0C130004CDD5 /* ViewController.swift in Sources */,
+				36C8C7231DFA844D00A2CF34 /* Keyboard.swift in Sources */,
 				36A6E6D61DAE0C130004CDD5 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -303,6 +311,7 @@
 				36A6E6E61DAE0C130004CDD5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
