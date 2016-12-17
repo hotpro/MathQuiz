@@ -72,8 +72,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sz9-w8-xSL">
-                                <rect key="frame" x="139" y="241" width="103" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="right" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sz9-w8-xSL">
+                                <rect key="frame" x="125" y="241" width="103" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -107,15 +107,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kVo-yz-0ko">
+                                <rect key="frame" x="140" y="344" width="95" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.080355031446087577" green="0.31691540170234012" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="ansLabel" destination="kVo-yz-0ko" id="AHK-2K-xql"/>
                         <outlet property="numberText1" destination="Sz9-w8-xSL" id="qGN-ud-Jz0"/>
                         <outlet property="operandLabel1" destination="4pE-gr-ihx" id="4Ol-4R-3aP"/>
                         <outlet property="operandLabel2" destination="SVa-k3-V8A" id="ytg-c5-f16"/>
                         <outlet property="operatorLabel" destination="XZH-I6-Xbf" id="ZiO-OL-kAL"/>
                         <outlet property="questionLabel" destination="lPh-ln-fjD" id="9Vf-vk-NZp"/>
+                        <segue destination="BYZ-38-t0r" kind="show" identifier="returnHome" id="bSU-W4-c9a"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3A0-HJ-qLA" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -141,4 +150,7 @@
             <point key="canvasLocation" x="136.80000000000001" y="792.95352323838085"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="bSU-W4-c9a"/>
+    </inferredMetricsTieBreakers>
 </document>
