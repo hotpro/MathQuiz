@@ -51,7 +51,7 @@ class QuizViewController: UIViewController, KeyboardDelegate {
         correctAnswerCnt = 0
         counter = 0
         
-
+        // generate the first question
         generateQuestion()
 
     }
@@ -61,18 +61,13 @@ class QuizViewController: UIViewController, KeyboardDelegate {
         // Dispose of any resources that can be recreated.
     }
     
-    func returnHome() {
-        performSegue(withIdentifier: "returnHome", sender: nil)
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        
-        if segue.identifier == "returnHome" {
-            let vc:ViewController = segue.destination as! ViewController
-            
-        }
-    }
-    
+    /*
+     * Xingxing:
+     * Generate a new question, and update the UI
+     * 1) Disable answer correctness timer
+     * 2) If reaching 10 questions, alert the quiz score and return to quiz home page
+     * 3) For a new question: set question id; generate two operands; set expected answer; set question timer; update UI
+     */
     func generateQuestion() {
         if (ansTimer != nil) {
             ansTimer.invalidate()
@@ -80,14 +75,11 @@ class QuizViewController: UIViewController, KeyboardDelegate {
         
         if (questionId == 10) {
             let scoreAlert = UIAlertController(title: "", message: "Score: " + String(correctAnswerCnt) + " / 10", preferredStyle: .alert)
-//            alert.addAction(UIAlertAction(title:"OK", style: .Default, handler:  { action in self.performSegueWithIdentifier("mySegueIdentifier", sender: self) }
 
-            let returnAction = UIAlertAction(title:"Return", style:.default) { action -> Void in
-//                self.dismiss(animated: true, completion: nil)
-//                self.returnHome()
+            let okAction = UIAlertAction(title:"OK", style:.default) { action -> Void in
                 self.performSegue(withIdentifier: "returnHome", sender: self)
             }
-            scoreAlert.addAction(returnAction)
+            scoreAlert.addAction(okAction)
             present(scoreAlert, animated: true, completion: nil)
 
             questionId = 0
@@ -98,13 +90,16 @@ class QuizViewController: UIViewController, KeyboardDelegate {
         
         questionId = questionId + 1
         operand1 = Int(arc4random_uniform(10))
-        operand2 = Int(arc4random_uniform((UInt32(operand1) + 1)))
+        
         
         if operatorType == 0 {
+            operand2 = Int(arc4random_uniform(10))
             expectedAns = operand1 + operand2
         } else if operatorType == 1 {
+            operand2 = Int(arc4random_uniform((UInt32(operand1) + 1)))
             expectedAns = operand1 - operand2
         } else if operatorType == 2 {
+            operand2 = Int(arc4random_uniform(10))
             expectedAns = operand1 * operand2
         }
         
@@ -118,6 +113,10 @@ class QuizViewController: UIViewController, KeyboardDelegate {
 
     }
     
+    /*
+     * Xingxing: 
+     * update function for question timer
+     */
     func timerUpdate() {
         if(counter < 5) {
             counter = counter + 1
@@ -126,18 +125,28 @@ class QuizViewController: UIViewController, KeyboardDelegate {
             alertAnswerCorrectness(msg: "Wrong :(")
         }
     }
-
-    func questionUpdate() {
+    
+    /*
+     * Xingxing:
+     * update function for answer timer
+     */
+    func answerUpdate() {
         ansLabel.text = ""
         self.generateQuestion()
     }
     
+    
+    /*
+     * Xingxing:
+     * alert the answer correctness; 
+     * need timer to keep the correctness information visible to user for 1 seconds
+     */
     func alertAnswerCorrectness(msg: String) {
         questionTimer.invalidate()
         counter = 0
 
         ansLabel.text = msg
-        ansTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(questionUpdate), userInfo: nil, repeats:false)
+        ansTimer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(answerUpdate), userInfo: nil, repeats:false)
         
     }
     
@@ -151,9 +160,14 @@ class QuizViewController: UIViewController, KeyboardDelegate {
         
     }
     
+    
+    /*
+     * Xingxing:
+     * process key event for number key
+     * update the answer text display; 
+     * check if it is correct answer already, if yes, trigger alert to show correctness and move to next question
+     */
     func keyWasTapped(_ character: String) {
-//        numberText1.insertText(character)
-
         numberText1.text = numberText1.text! + character
         let ans = (Int)(numberText1.text!)
         if (ans == expectedAns) {
@@ -162,14 +176,13 @@ class QuizViewController: UIViewController, KeyboardDelegate {
         }
     }
     
+    
+    /*
+     * Xingxing:
+     * process key event for enter key
+     * need to validate answer correctness and trigger the alert
+     */
     func backspace() {
-//        var str = numberText1.text!
-//        var len = str.characters.count
-//        if (len > 0) {
-//            let index = str.index(str.startIndex, offsetBy: len - 1)
-//            numberText1.text = str.substring(to: index)  // Hello
-//
-//        }
         let ans = (Int)(numberText1.text!)
         if (ans == expectedAns) {
             correctAnswerCnt = correctAnswerCnt + 1
